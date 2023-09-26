@@ -1,30 +1,34 @@
 import java.util.List;
 
 public class BottleOfWaterVendingMachine implements VendingMachine {
-    private final List<Product> products;
+    List<BottleofWater> productList;
 
-    public BottleOfWaterVendingMachine(List<Product> products) {
-        this.products = products;
+    public BottleOfWaterVendingMachine(List<BottleofWater> productList) {
+        this.productList = productList;
     }
 
+   
+
+    public BottleofWater getProduct(String name, int volume){
+        for(BottleofWater bottleOfWater: productList){
+            if(bottleOfWater.getName().equals(name) && bottleOfWater.getVolume()== volume){
+                return bottleOfWater;
+                }
+            }
+            return null;
+        }
+        
     public Product getProduct(String name){
-        for(Product product: products){
-            if(product.getName().equalsIgnoreCase(name)){
+        for(Product product: productList){
+            if(product.getName().equals(name)){
                 return product;
             }
         }
-        throw new IllegalStateException(String.format("Продукт c названием %s не найден.", name));
+        return null;
     }
 
-    public BottleOfWater getProduct(String name, int volume){
-        for(Product product: products){
-            if(product instanceof BottleOfWater){
-                if(product.getName().equalsIgnoreCase(name) && ((BottleOfWater) product).getVolume() == volume){
-                    return (BottleOfWater) product;
-                }
-            }
-
-        }
-        throw new IllegalStateException(String.format("Продукт c названием %s не найден.", name));
+    public void addBottleOfWatr( BottleofWater bottleOfWater){
+        this.productList.add(bottleOfWater);
     }
+    
 }

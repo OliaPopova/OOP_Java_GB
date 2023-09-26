@@ -10,7 +10,7 @@ public class BottleofWater extends Product{
 
     @Override
     public String toString(){
-        return "Bottleofwater{"+
+        return "BottleOfwater{"+
                 "volume" + volume +
                 '}';
     }
